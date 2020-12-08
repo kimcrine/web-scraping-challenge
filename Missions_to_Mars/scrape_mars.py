@@ -69,7 +69,9 @@ def scrape_mars_facts():
     
         mars_facts_df.columns = ['Description', 'Value']
 
-        mars_info['tables'] = mars_facts_df
+        mars_facts_html = mars_facts_df.to_html()
+
+        mars_info['tables'] = mars_facts_html
 
         return mars_info
 
@@ -105,7 +107,7 @@ def scrape_mars_hemispheres():
             hemisphere_image_urls.append({"title" : title, "img_url" : img_url})
 
         mars_info['hemisphere_image_urls'] = hemisphere_image_urls
-        
+
         browser.quit()
 
         return mars_info
